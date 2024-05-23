@@ -17,3 +17,7 @@ This webapp lets the user draw on a 16x16 grid of squares by moving the mouse ov
 - Implemenet progressive darkening effect
     - Interaction darkens square by 10 %
     - Css property: opacity
+
+## Resources:
+- [Flexbox reference](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Bootstrap doc](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
