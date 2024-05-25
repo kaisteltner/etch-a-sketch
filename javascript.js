@@ -31,6 +31,7 @@ document.body.onmousedown = function () {
 };
 document.body.onmouseup = function () {
   mouseDown = false;
+  grid.onmousemove = null
 };
 
 grid.onmousedown = (e) => {
