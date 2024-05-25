@@ -1,5 +1,14 @@
 let nSquareBase = 16;
 const grid = document.querySelector("#grid");
+// grid.addEventListener("onmouseover", colorSquare);
+
+let mouseDown = false;
+document.body.onmousedown = function() { 
+  mouseDown = true;
+}
+document.body.onmouseup = function() {
+  mouseDown = false;
+}
 
 function addSquares() {
     // Set up grid of empty squares
@@ -17,5 +26,8 @@ function addSquares() {
         grid.appendChild(row);
     }
 }
-    
+
+grid.onmouseover = function (e) {
+    if (mouseDown) {e.target.style.backgroundColor = "black"};
+}
 addSquares();
