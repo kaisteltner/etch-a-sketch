@@ -1,7 +1,7 @@
-let nSquareBase = 16;
 let mouseDown = false;
 const grid = document.querySelector('#grid');
 const btnReset = document.querySelector('#btn-reset');
+const inpNum = document.querySelector('#nSquaresInput');
 
 // Function definitions
 function addSquares() {
@@ -43,11 +43,11 @@ grid.onmouseup = () => {
 };
 
 btnReset.onclick = () => {
-  squares = document.querySelectorAll('.square');
-  squares.forEach((square) => {
-    square.style.backgroundColor = 'white';
-  });
+  nSquareBase = inpNum.valueAsNumber;
+  grid.replaceChildren();
+    addSquares();
 };
 
 // Startup
+let nSquareBase = inpNum.valueAsNumber;
 addSquares();
