@@ -1,13 +1,6 @@
 let nSquareBase = 16;
 const grid = document.querySelector("#grid");
 
-let mouseDown = false;
-document.body.onmousedown = function() { 
-  mouseDown = true;
-}
-document.body.onmouseup = function() {
-  mouseDown = false;
-}
 
 function addSquares() {
     // Set up grid of empty squares
@@ -26,8 +19,16 @@ function addSquares() {
     }
 }
 
-grid.addEventListener("mousemove", function (e) {
+let mouseDown = false;
+document.body.onmousedown = function() { 
+  mouseDown = true;
+}
+document.body.onmouseup = function() {
+  mouseDown = false;
+}
+
+grid.onmousemove = function (e) {
     if (mouseDown) {e.target.style.backgroundColor = "black"};
-});
+};
 
 addSquares();
