@@ -1,7 +1,8 @@
 let nSquareBase = 16;
+let mouseDown = false;
 const grid = document.querySelector("#grid");
 
-
+// Function definitions
 function addSquares() {
     // Set up grid of empty squares
     const baselength = grid.clientWidth / nSquareBase;
@@ -19,7 +20,11 @@ function addSquares() {
     }
 }
 
-let mouseDown = false;
+function colorSquare(e) {
+    e.target.style.backgroundColor = "black";
+}
+
+// Callbacks
 document.body.onmousedown = function() { 
   mouseDown = true;
 }
@@ -27,8 +32,10 @@ document.body.onmouseup = function() {
   mouseDown = false;
 }
 
-grid.onmousemove = function (e) {
-    if (mouseDown) {e.target.style.backgroundColor = "black"};
-};
+grid.onmousedown = (e) => {
+    colorSquare(e);
+    grid.onmousemove = (e) => colorSquare(e)};
+grid.onmouseup = () => {grid.onmousemove = null};
 
+// Startup
 addSquares();
