@@ -8,6 +8,7 @@ body {
 
 #grid {
     box-shadow: 5px 5px 5px, 5px 5px 5px;
+    background-color: white;
 }
 
 .grid-row {
@@ -18,4 +19,5 @@ body {
     background-color: white;
     margin: 0;
     padding: 0;
+    opacity: 0;
 }
