@@ -1,7 +1,10 @@
 const MAX_SQUARES = 100;
+let squareColor = [0, 0, 0];
+let randomColor = false;
 let mouseDown = false;
 const grid = document.querySelector('#grid');
 const btnReset = document.querySelector('#btn-reset');
+const btnRandom = document.querySelector('#btn-random');
 const inpNum = document.querySelector('#nSquaresInput');
 
 // Function definitions
@@ -23,7 +26,12 @@ function addSquares() {
 }
 
 function colorSquare(e) {
-  e.target.style.backgroundColor = 'black';
+  console.log(randomColor);
+  if (randomColor) {
+    for(var i = 0; i < 3; i++)
+      squareColor[i] = (Math.floor(Math.random() * 255));
+  }
+  e.target.style.backgroundColor = 'rgb('+ squareColor.join(',') +')';
 }
 
 // Callbacks
@@ -72,6 +80,8 @@ btnReset.onclick = () => {
   grid.replaceChildren();
   addSquares();
 };
+
+btnRandom.onclick = () => randomColor = !randomColor;
 
 // Startup
 let nSquareBase = inpNum.valueAsNumber;
