@@ -2,6 +2,7 @@ const MAX_SQUARES = 100;
 let squareColor = [0, 0, 0];
 let randomColor = false;
 let mouseDown = false;
+let activeSquare = null;
 const grid = document.querySelector('#grid');
 const btnReset = document.querySelector('#btn-reset');
 const btnRandom = document.querySelector('#btn-random');
@@ -26,7 +27,8 @@ function addSquares() {
 }
 
 function colorSquare(e) {
-  console.log(randomColor);
+  if (activeSquare === e.target) {return}
+  activeSquare = e.target;
   if (randomColor) {
     for(var i = 0; i < 3; i++)
       squareColor[i] = (Math.floor(Math.random() * 255));
