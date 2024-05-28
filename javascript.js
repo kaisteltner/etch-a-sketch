@@ -83,7 +83,10 @@ btnReset.onclick = () => {
   addSquares();
 };
 
-btnRandom.onclick = () => randomColor = !randomColor;
+btnRandom.onclick = () => {
+  randomColor = !randomColor;
+  if (!randomColor) {squareColor = [0, 0, 0]};
+}
 
 // Startup
 let nSquareBase = inpNum.valueAsNumber;
