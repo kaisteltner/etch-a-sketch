@@ -1,3 +1,4 @@
+const MAX_SQUARES = 100;
 let mouseDown = false;
 const grid = document.querySelector('#grid');
 const btnReset = document.querySelector('#btn-reset');
@@ -43,9 +44,33 @@ grid.onmouseup = () => {
 };
 
 btnReset.onclick = () => {
+  // Safety check that input is lower or equal to maximum allowed
+  const userInput = inpNum.valueAsNumber;
+  if (userInput > MAX_SQUARES || userInput < 1) {
+    // Display alert as warning
+    const alert = document.createElement('div');
+    alert.classList.add("alert", "alert-warning", "alert-dismissible", "fade", "show", "text-center", "font-monospace");
+    alert.setAttribute('role', 'alert');
+    if (userInput > MAX_SQUARES) {
+      alert.innerText = `Maximum number of squares per side is ${MAX_SQUARES}!`;
+      inpNum.value = MAX_SQUARES;
+    } else {
+      alert.innerText = `Minimum number of squares per side is 1!`;
+      inpNum.value = 1;
+    }
+
+    const btnAlert = document.createElement('button');
+    btnAlert.setAttribute('type', 'button');
+    btnAlert.setAttribute('data-bs-dismiss','alert');
+    btnAlert.setAttribute('aria-label', 'close');
+    btnAlert.classList.add('btn-close');
+    alert.appendChild(btnAlert);
+
+    document.getElementById('main-content').appendChild(alert);
+  }
   nSquareBase = inpNum.valueAsNumber;
   grid.replaceChildren();
-    addSquares();
+  addSquares();
 };
 
 // Startup
