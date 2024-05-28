@@ -6,6 +6,7 @@ let activeSquare = null;
 const grid = document.querySelector('#grid');
 const btnReset = document.querySelector('#btn-reset');
 const btnRandom = document.querySelector('#btn-random');
+const btnShade = document.querySelector('#btn-shade');
 const inpNum = document.querySelector('#nSquaresInput');
 
 // Function definitions
@@ -29,6 +30,13 @@ function addSquares() {
 function colorSquare(e) {
   if (activeSquare === e.target) {return}
   activeSquare = e.target;
+  
+  if (btnShade.classList.contains('active') && e.target.style.opacity <= 1)  {
+    e.target.style.opacity = Number(e.target.style.opacity) + 0.2
+  } else {
+    e.target.style.opacity = 1
+  };
+
   if (btnRandom.classList.contains('active')) {
     for(var i = 0; i < 3; i++)
       squareColor[i] = (Math.floor(Math.random() * 255));
